@@ -10,9 +10,9 @@ import java.sql.Date;
 
 @Entity
 @Table(name="users")
-public class Users {
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     @Column(unique = true)
@@ -24,21 +24,21 @@ public class Users {
     private boolean isActive;
 
     @DateTimeFormat(pattern="dd-MM-yyyy")
-    private Date registerationDate;
+    private Date registrationDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userTypeId", referencedColumnName = "userTypeId")
-    private UsersType userTypeId;
+    private UserType userTypeId;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(int userId, String email, String password, boolean isActive, Date registerationDate, UsersType userTypeId) {
+    public User(int userId, String email, String password, boolean isActive, Date registrationDate, UserType userTypeId) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.isActive = isActive;
-        this.registerationDate = registerationDate;
+        this.registrationDate = registrationDate;
         this.userTypeId = userTypeId;
     }
 
@@ -66,12 +66,12 @@ public class Users {
         this.password = password;
     }
 
-    public Date getRegisterationDate() {
-        return registerationDate;
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setRegisterationDate(Date registerationDate) {
-        this.registerationDate = registerationDate;
+    public void setRegistrationDate(Date registerationDate) {
+        this.registrationDate = registerationDate;
     }
 
     public boolean isActive() {
@@ -82,11 +82,11 @@ public class Users {
         isActive = active;
     }
 
-    public UsersType getUserTypeId() {
+    public UserType getUserTypeId() {
         return userTypeId;
     }
 
-    public void setUserTypeId(UsersType userTypeId) {
+    public void setUserTypeId(UserType userTypeId) {
         this.userTypeId = userTypeId;
     }
 
@@ -97,7 +97,7 @@ public class Users {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", isActive=" + isActive +
-                ", registerationDate=" + registerationDate +
+                ", registerationDate=" + registrationDate +
                 ", userTypeId=" + userTypeId +
                 '}';
     }
