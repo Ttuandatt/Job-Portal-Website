@@ -5,7 +5,6 @@ import com.daniel.jobportal.entity.UserType;
 import com.daniel.jobportal.service.UserService;
 import com.daniel.jobportal.service.UserTypeService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,7 @@ public class UserController {
     private final UserTypeService userTypeService;
     private final UserService userService;
 
-    @Autowired
+
     public UserController(UserTypeService userTypeService, UserService userService) {
         this.userTypeService = userTypeService;
         this.userService = userService;
@@ -56,3 +55,4 @@ public class UserController {
     }
 
 }
+
