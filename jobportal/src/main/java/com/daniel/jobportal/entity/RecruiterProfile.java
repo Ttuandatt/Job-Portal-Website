@@ -29,6 +29,9 @@ public class RecruiterProfile {
     // Constructor mặc định (bắt buộc phải có khi dùng JPA)
     public RecruiterProfile() {
     }
+    public RecruiterProfile(User user){
+        this.userId = user;
+    }
 
     // Constructor đầy đủ để khởi tạo đối tượng với tất cả các thuộc tính
     public RecruiterProfile(int userAccountId, User userId, String firstName, String lastName,

@@ -31,6 +31,10 @@ public class JobSeekerProfile {
 
     public JobSeekerProfile() {
     }
+    public JobSeekerProfile(User user) {
+        this.userId = user;
+    }
+
 
     public JobSeekerProfile(int userAccountId, User userId, String firstName, String lastName, String city, String state, String country, String workAuthorization, String employmentType, String resume, String profilePhoto, List<Skills> skills) {
         this.userAccountId = userAccountId;

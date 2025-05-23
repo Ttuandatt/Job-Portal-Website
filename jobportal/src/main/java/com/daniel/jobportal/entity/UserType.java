@@ -13,6 +13,13 @@ public class UserType {
 
     private String userTypeName;
 
+    /*
+    *   targetEntity = User.class: Chỉ rõ thực thể con là User.
+    *   mappedBy = "userTypeId":
+            Dòng này báo cho JPA rằng trường userTypeId trong class User là bên sở hữu (owning side) của mối quan hệ.
+            Tức là: bảng users trong database có cột khóa ngoại user_type_id tham chiếu tới user_type(user_type_id).
+    *   cascade = CascadeType.ALL: Bất kỳ thao tác nào trên UserType (persist, remove, merge...) cũng sẽ được "lan truyền" xuống danh sách users liên kết với nó.
+    * */
     @OneToMany(targetEntity = User.class, mappedBy = "userTypeId", cascade = CascadeType.ALL)
     private List<User> users;
 
