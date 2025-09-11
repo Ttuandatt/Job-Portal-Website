@@ -129,3 +129,8 @@ CREATE TABLE `skills` (
   KEY `FKsjdksau8sat30c00aqh5xf2wh` (`job_seeker_profile`),
   CONSTRAINT `FKsjdksau8sat30c00aqh5xf2wh` FOREIGN KEY (`job_seeker_profile`) REFERENCES `job_seeker_profile` (`user_account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+-----------------------------
+select * from users
