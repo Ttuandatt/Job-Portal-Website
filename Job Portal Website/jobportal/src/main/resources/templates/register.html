@@ -86,10 +86,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <select class="form-control" th:field="*{usersTypeId}" required>
+                                        <select class="form-control" th:field="*{user_type_id}" required>
                                             <option th:each="type : ${getAllTypes}"
-                                                    th:value="${type.userTypeId}"
-                                                    th:text="${type.userTypeName}">
+                                                    th:value="${type.user_type_id}"
+                                                    th:text="${type.user_type_name}">
                                             </option>
                                         </select>
 

@@ -6,7 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "recruiter_profile")
 public class RecruiterProfile {
     @Id
-    private String user_account_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int user_account_id;
 
     @OneToOne
     @JoinColumn(name = "user_account_id")
@@ -24,8 +25,11 @@ public class RecruiterProfile {
 
     //Constructor
     public RecruiterProfile(){}
+    public RecruiterProfile(Users userId){
+        this.userId = userId;
+    }
 
-    public RecruiterProfile(String user_account_id, Users userId, String city, String company, String country, String first_name, String last_name, String profile_photo, String state) {
+    public RecruiterProfile(int user_account_id, Users userId, String city, String company, String country, String first_name, String last_name, String profile_photo, String state) {
         this.user_account_id = user_account_id;
         this.userId = userId;
         this.city = city;
@@ -38,11 +42,11 @@ public class RecruiterProfile {
     }
 
     //Getters, Setters
-    public String getUser_account_id() {
+    public int getUser_account_id() {
         return user_account_id;
     }
 
-    public void setUser_account_id(String user_account_id) {
+    public void setUser_account_id(int user_account_id) {
         this.user_account_id = user_account_id;
     }
 
