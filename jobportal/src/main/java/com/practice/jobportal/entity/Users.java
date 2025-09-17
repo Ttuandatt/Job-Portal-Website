@@ -9,10 +9,8 @@ import java.sql.Date;
 @Entity
 @Table(name = "users")
 public class Users {
-    private static Users usersInstance;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
 
     @Column(unique = true)
@@ -26,33 +24,31 @@ public class Users {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date registrationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "userTypeId", referencedColumnName = "userTypeId")
     private UsersType usersTypeId;
 
-    // Use singleton pattern to ensure only one instance of Users
-    // Constructors
+
     public Users() {
     }
-    private Users(String userTypeId, String userTypeName) {
-        this.usersTypeId = UsersType.getUserType();
-        this.usersTypeId.setUserTypeId(userTypeId);
-        this.usersTypeId.setUserTypeName(userTypeName);
-    }
-    public static Users getUsersInstance() {
-        if(usersInstance==null){
-            usersInstance = new Users();
-        }
-        return  usersInstance;
+    public Users(String userId, String email, String password, boolean isActive, Date registrationDate, UsersType usersTypeId) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+        this.isActive = isActive;
+        this.registrationDate = registrationDate;
+        this.usersTypeId = usersTypeId;
     }
 
     // Getters and Setters
-    public String getId() {
+
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setId(String id) {
-        this.userId = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

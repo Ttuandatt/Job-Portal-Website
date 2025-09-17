@@ -1,17 +1,15 @@
 package com.practice.jobportal.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.usertype.UserType;
 
 import java.util.List;
 
 @Entity
 @Table(name = "users_type")
 public class UsersType {
-    private static UsersType userTypeInstance;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String userTypeId;
 
     private String userTypeName;
@@ -19,21 +17,15 @@ public class UsersType {
     @OneToMany(targetEntity = Users.class,mappedBy = "usersTypeId",cascade = CascadeType.ALL)
     private List<Users> users;
 
-    // Use singleton pattern to ensure only one instance of UsersType
-    // Constructors
-    private UsersType(String userTypeId, String userTypeName) {
-        this.userTypeId = userTypeId;
-        this.userTypeName = userTypeName;
-    }
+
     public UsersType() {
     }
-
-    public static UsersType getUserType() {
-        if(userTypeInstance==null){
-            userTypeInstance = new UsersType();
-        }
-        return  userTypeInstance;
+    public UsersType(String userTypeId, String userTypeName, List<Users> users) {
+        this.userTypeId = userTypeId;
+        this.userTypeName = userTypeName;
+        this.users = users;
     }
+
 
     // Getters and Setters
     public String getUserTypeId() {
