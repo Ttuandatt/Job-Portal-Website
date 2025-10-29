@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link
             th:rel="stylesheet"
@@ -50,10 +50,6 @@
                                 method="post"
                         >
                             <div class="box-body bozero mx2p">
-                                <div class="col-md-12">
-                                    <!-- Hi?n th? l?i n?u có -->
-                                    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
-
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -86,13 +82,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <select class="form-control" th:field="*{user_type_id}" required>
-                                            <option th:each="type : ${getAllTypes}"
-                                                    th:value="${type.user_type_id}"
-                                                    th:text="${type.user_type_name}">
-                                            </option>
+                                        <select
+                                                required
+                                                class="form-control"
+                                                th:field="*{userTypeId}"
+                                        >
+                                            <th:block th:each="userType :${getAllTypes}">
+                                                <option
+                                                        th:text="${userType.userTypeName}"
+                                                        th:value="${userType.userTypeId}"
+                                                ></option>
+                                            </th:block>
                                         </select>
-
                                     </div>
                                 </div>
                             </div>
